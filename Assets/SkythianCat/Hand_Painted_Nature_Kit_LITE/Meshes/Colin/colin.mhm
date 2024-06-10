@@ -1,0 +1,38 @@
+# Written by MakeHuman 1.2.1 alpha
+version v1.2.1
+uuid 001eea8b-4ca8-434e-9b25-0c728d7dae3c
+name colin
+camera 2.0 356.0 0.7478008137260859 1.0 -1.0 1.2249999999999996
+modifier head/head-fat-decr|incr 0.544000
+modifier torso/torso-scale-depth-decr|incr 0.270000
+modifier breast/BreastSize 0.500000
+modifier breast/BreastFirmness 0.500000
+modifier macrodetails/Gender 1.000000
+modifier macrodetails/Age 0.749000
+modifier macrodetails/African 0.000000
+modifier macrodetails/Asian 0.000000
+modifier macrodetails/Caucasian 1.000000
+modifier macrodetails-universal/Muscle 0.500000
+modifier macrodetails-universal/Weight 1.000000
+modifier macrodetails-height/Height 0.162000
+modifier macrodetails-proportions/BodyProportions 0.500000
+modifier bodyshapes/bodyshapes-elvs-fem-apple 1.000000
+modifier measure/measure-neck-circ-decr|incr 0.342000
+modifier measure/measure-upperleg-height-decr|incr -0.486000
+modifier measure/measure-thigh-circ-decr|incr 0.174000
+tongue tongue01 52ad91a3-caad-4e50-8c38-67634e5e789c
+teeth Teeth_Base 0a5ec82a-0d5f-43ce-a765-8f076f95692d
+proxy male_generic df01ef58-b37f-479e-9f97-b4c1b9626aa8
+hair short02 c104cd4a-1edc-43f9-8b94-f63345a44638
+eyebrows eyebrow012 1c16325c-7831-4166-831a-05c5b609c219
+eyes HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6
+clothes shoes04 0d753f2e-55f9-4d60-9a78-261f42b494fc
+clothes male_casualsuit01 79ced554-1d8a-4c14-a6a8-e1de90b09c32
+clothesHideFaces True
+skinMaterial skins/young_asian_male/young_asian_male.mhmat
+material short02 c104cd4a-1edc-43f9-8b94-f63345a44638 short02.mhmat
+material HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6 eyes/materials/brown.mhmat
+material eyebrow012 1c16325c-7831-4166-831a-05c5b609c219 eyebrow012.mhmat
+material Teeth_Base 0a5ec82a-0d5f-43ce-a765-8f076f95692d teeth/materials/teeth.mhmat
+material tongue01 52ad91a3-caad-4e50-8c38-67634e5e789c tongue01.mhmat
+subdivide False
