@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public void ChangeScene(int sceneJouer)
+    public void JouerScene(int sceneJouer)
     {
         SceneManager.LoadScene(sceneJouer);
+    }
+
+    public void CreditScene(int creditScene)
+    {
+        SceneManager.LoadScene(creditScene);
     }
 
     public void Quitter()
