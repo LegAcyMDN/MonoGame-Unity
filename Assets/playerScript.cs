@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     public float jumpForce = 5f; // La force de saut
-    private bool isGrounded; // Pour vérifier si le joueur est au sol
+    private bool isGrounded= true; // Pour vérifier si le joueur est au sol
     private Rigidbody rb;
     public float speed = 5f;
     public float mouseSensitivity = 2f;
@@ -21,7 +21,8 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            Debug.Log(isGrounded);
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true )
         {
             Jump();
         }
@@ -46,7 +47,7 @@ public class playerScript : MonoBehaviour
         isGrounded = false; // Le joueur n'est plus au sol après le saut
     }
 
-    void OnCollisionEnter(Collision collision)
+   void OnCollisionEnter(Collision collision)
     {
         // Vérifie si le joueur touche le sol
         if (collision.gameObject.CompareTag("Ground"))
