@@ -23,11 +23,11 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isGrounded);
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true )
         {
             Jump();
         }
-
         //mouvement souris cam
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -45,18 +45,19 @@ public class playerScript : MonoBehaviour
         transform.Translate(Vector3.right * 5f * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
     }
-    void Jump()
+    async void Jump()
     {
-        // Applique une force verticale au Rigidbody du joueur
+        isGrounded = false;
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        isGrounded = false; // Le joueur n'est plus au sol après le saut
     }
 
    void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("on rentre dans la fonction");
         // Vérifie si le joueur touche le sol
         if (collision.gameObject.CompareTag("Ground"))
         {
+            Debug.Log("Oe");
             isGrounded = true; // Le joueur est au sol
         }
     }
