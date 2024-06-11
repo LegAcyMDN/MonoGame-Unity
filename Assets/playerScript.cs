@@ -9,7 +9,9 @@ public class playerScript : MonoBehaviour
     private Rigidbody rb;
     public float speed = 5f;
     public float mouseSensitivity = 2f;
+    private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +23,24 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            Debug.Log(isGrounded);
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true )
         {
             Jump();
         }
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+      
 
+        // mouvement verticaux cam et joueur
+        verticalRotation -= mouseX;
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
         transform.Rotate(0, mouseX, 0);
 
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        horizontalRotation -= mouseY;
+        Debug.Log(horizontalRotation);
+        horizontalRotation = Mathf.Clamp(horizontalRotation, -90f, 90f);
+       // Player.firstPersonCamera.transform.rotation(-mouseY);
+       //.LookAt(new Vector3(-mouseY, CurrentCameraAngle.y, CurrentCameraAngle.z));
     }
     void FixedUpdate()
     {
