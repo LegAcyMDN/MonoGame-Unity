@@ -7,8 +7,8 @@ public class playerScript : MonoBehaviour
     public float jumpForce = 5f; // La force de saut
     private bool isGrounded= true; // Pour vérifier si le joueur est au sol
     private Rigidbody rb;
-    public float speed = 5f;
-    public float mouseSensitivity = 2f;
+    public float speed = 10f;
+    public float mouseSensitivity = 3f;
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
 
@@ -27,20 +27,17 @@ public class playerScript : MonoBehaviour
         {
             Jump();
         }
+
+        //mouvement souris cam
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-      
-
-        // mouvement verticaux cam et joueur
-        verticalRotation -= mouseX;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-        transform.Rotate(0, mouseX, 0);
-
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        verticalRotation += mouseX;
         horizontalRotation -= mouseY;
-        Debug.Log(horizontalRotation);
+        verticalRotation = Mathf.Clamp(verticalRotation, -360f, 360f);
         horizontalRotation = Mathf.Clamp(horizontalRotation, -90f, 90f);
-       // Player.firstPersonCamera.transform.rotation(-mouseY);
-       //.LookAt(new Vector3(-mouseY, CurrentCameraAngle.y, CurrentCameraAngle.z));
+       // Debug.Log(horizontalRotation);
+        //Debug.Log(verticalRotation);
+        transform.rotation = Quaternion.Euler(horizontalRotation, verticalRotation, 0);
     }
     void FixedUpdate()
     {
