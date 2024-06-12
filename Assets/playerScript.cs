@@ -14,7 +14,7 @@ public class playerScript : MonoBehaviour
     private float verticalRotation = 0f;
     public TMP_Text scoreText;
     private int score = 0;
-
+    private bool questDisplayed;
     // Start is called before the first frame update
     void Start()
     {
