@@ -13,6 +13,16 @@ public class ColinAction : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         canva.enabled = true;
+        if (win)
+        {
+            animator.SetTrigger("Angry");
+        }
+        else
+        {
+            Debug.Log("oui");
+            animator.SetTrigger("Win");
+        }
+
     }
 
     void OnTriggerExit(Collider other)
@@ -33,15 +43,6 @@ public class ColinAction : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Vérifie si le joueur entre en collision avec un autre joueur
-        if (collision.gameObject.CompareTag("Player")&&win==false)
-        {
-            Debug.Log("non");
-            animator.SetTrigger("Angry");
-        }
-        if (collision.gameObject.CompareTag("Player")&&win==true)
-        {
-            Debug.Log("oui");
-            animator.SetTrigger("Win");
-        }
+
     }
 }
