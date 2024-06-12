@@ -2515,6 +2515,7 @@ GameObject:
   - component: {fileID: 230348789}
   - component: {fileID: 230348788}
   - component: {fileID: 230348787}
+  - component: {fileID: 230348791}
   m_Layer: 0
   m_Name: Invisible_floor
   m_TagString: Untagged
@@ -2600,6 +2601,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &230348791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230348786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7590904c8bcc847b0cce1c014c00fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252509382
 GameObject:
   m_ObjectHideFlags: 0
@@ -6672,7 +6685,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845189947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
