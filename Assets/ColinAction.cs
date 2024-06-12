@@ -7,11 +7,24 @@ public class ColinAction : MonoBehaviour
     public bool win;
     private Animator animator;
     // Start is called before the first frame update
-    void Start()
+    public Canvas canva; // <-- Assign your GUITexture to this.
+
+
+    void OnTriggerEnter(Collider other)
     {
-        animator = GetComponent<Animator>();
+        canva.enabled = true;
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        canva.enabled = false;
+    }
+    void Start()
+    {
+        canva.enabled = false;
+
+        animator = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
