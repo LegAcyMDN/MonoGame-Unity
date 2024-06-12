@@ -6,9 +6,22 @@ public class ColinAction : MonoBehaviour
 {
     public bool win;
     private Animator animator;
+    public Canvas canva; // <-- Assign your GUITexture to this.
+    
+
+    void OnTriggerEnter(Collider other)
+    {
+        canva.enabled = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        canva.enabled = false;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        canva.enabled = false; 
         animator = GetComponent<Animator>();
     }
 
@@ -20,6 +33,7 @@ public class ColinAction : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Vérifie si le joueur entre en collision avec un autre joueur
+
         if (collision.gameObject.CompareTag("Player")&&win==false)
         {
             Debug.Log("non");
