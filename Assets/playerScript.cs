@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     public float jumpForce = 5f; // La force de saut
-    private bool isGrounded= true; // Pour vérifier si le joueur est au sol
+   // private bool isGrounded= true; // Pour vérifier si le joueur est au sol
     private Rigidbody rb;
     public float speed = 10f;
     public float mouseSensitivity = 3f;
@@ -23,11 +23,11 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isGrounded);
+      /*  Debug.Log(isGrounded);
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true )
         {
             Jump();
-        }
+        }*/
         //mouvement souris cam
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -45,7 +45,7 @@ public class playerScript : MonoBehaviour
         transform.Translate(Vector3.right * 5f * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
         
     }
-    async void Jump()
+    /*void Jump()
     {
         isGrounded = false;
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -60,6 +60,6 @@ public class playerScript : MonoBehaviour
             Debug.Log("Oe");
             isGrounded = true; // Le joueur est au sol
         }
-    }
+    }*/
 
 }
