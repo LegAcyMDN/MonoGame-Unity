@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d5249eb953c54787cafb2690aa856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   jumpForce: 5
   speed: 5
   mouseSensitivity: 2
@@ -641,6 +642,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1637474447
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637474444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663641846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -768,6 +782,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b0d1baa73dfcff541a74ea4249c48311, type: 3}
       propertyPath: m_Name
       value: test_cigar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0d1baa73dfcff541a74ea4249c48311, type: 3}
+      propertyPath: m_TagString
+      value: Cigars
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0d1baa73dfcff541a74ea4249c48311, type: 3}
