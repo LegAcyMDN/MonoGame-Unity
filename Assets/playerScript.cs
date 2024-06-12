@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
+    public int score;
     public float jumpForce = 5f; // La force de saut
-   // private bool isGrounded= true; // Pour vérifier si le joueur est au sol
     private Rigidbody rb;
     public float speed = 10f;
     public float mouseSensitivity = 3f;
@@ -23,11 +23,6 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      /*  Debug.Log(isGrounded);
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true )
-        {
-            Jump();
-        }*/
         //mouvement souris cam
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -43,23 +38,17 @@ public class playerScript : MonoBehaviour
     {
         transform.Translate(Vector3.forward * 5f * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         transform.Translate(Vector3.right * 5f * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+        //ColinAction.win = true;
         
     }
-    /*void Jump()
+    void OnCollisionEnter(Collision collision)
     {
-        isGrounded = false;
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
-   void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("on rentre dans la fonction");
-        // Vérifie si le joueur touche le sol
-        if (collision.gameObject.CompareTag("Ground"))
+        // Vérifie si le joueur entre en collision avec un autre joueur
+        if (collision.gameObject.CompareTag("Cigars"))
         {
-            Debug.Log("Oe");
-            isGrounded = true; // Le joueur est au sol
+            Debug.Log("Collision détectée avec un autre joueur !");
+            // Ajoutez ici le code pour gérer la collision, par exemple, réduire la vie, repousser les joueurs, etc.
         }
-    }*/
+    }
 
 }
