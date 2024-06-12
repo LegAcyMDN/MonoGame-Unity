@@ -8,11 +8,12 @@ public class ColinAction : MonoBehaviour
     private Animator animator;
     // Start is called before the first frame update
     public Canvas canva; // <-- Assign your GUITexture to this.
-
+    public CigarSpawner spawnCigarScript;
 
     void OnTriggerEnter(Collider other)
     {
         canva.enabled = true;
+        spawnCigarScript.SpawnCigars();
         if (win)
         {
             animator.SetTrigger("Angry");
