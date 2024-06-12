@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro; 
 
 public class playerScript : MonoBehaviour
 {
-    public int score;
     public float jumpForce = 5f; // La force de saut
     private Rigidbody rb;
     public float speed = 10f;
     public float mouseSensitivity = 3f;
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
-
+    public TMP_Text scoreText;
+    private int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        if (scoreText == null)
+        {
+            Debug.LogError("Le champ scoreText n'a pas été assigné dans l'inspecteur.");
+            return;
+        }
+        UpdateScoreText();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -46,10 +54,31 @@ public class playerScript : MonoBehaviour
         // Vérifie si le joueur entre en collision avec un autre joueur
         if (collision.gameObject.CompareTag("Cigars"))
         {
-            Debug.Log("Collision détectée avec un autre joueur !");
             Destroy(collision.gameObject);
-            // Ajoutez ici le code pour gérer la collision, par exemple, réduire la vie, repousser les joueurs, etc.
+           
+        }
+        // Vérifier si l'objet touché a le tag "Collectible"
+        if (collision.gameObject.CompareTag("Cigars"))
+        {
+            // Incrémenter le score
+            score++;
+            // Mettre à jour le score affiché
+            UpdateScoreText();
+            // Détruire l'objet touché
+            Destroy(collision.gameObject);
         }
     }
 
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            // Mettre à jour le texte du score
+            scoreText.text = "Score: " + score;
+        }
+        else
+        {
+            Debug.LogError("scoreText est null.");
+        }
+    }
 }
