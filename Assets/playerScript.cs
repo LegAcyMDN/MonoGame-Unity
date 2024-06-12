@@ -32,12 +32,12 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         //mouvement souris cam
+       float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         verticalRotation += mouseX;
         horizontalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -360f, 360f);
-        horizontalRotation = Mathf.Clamp(horizontalRotation, -90f, 90f);
+       verticalRotation = Mathf.Clamp(verticalRotation, -360f, 360f);
+         horizontalRotation= Mathf.Clamp(horizontalRotation, -90f, 90f);
        // Debug.Log(horizontalRotation);
         //Debug.Log(verticalRotation);
         transform.rotation = Quaternion.Euler(horizontalRotation, verticalRotation, 0);
