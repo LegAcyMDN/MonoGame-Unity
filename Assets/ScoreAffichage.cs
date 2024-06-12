@@ -29,6 +29,7 @@ public class ScoreAffichage : MonoBehaviour
     }
     void UpdateScoreText()
     {
+        Debug.Log("oui");
         // Mettre à jour le texte du score
         scoreText.text = "Score: " + score + "/30";
     }
