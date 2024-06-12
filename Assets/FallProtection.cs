@@ -19,7 +19,7 @@ public class FallProtection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player Position: X = " + playerObj.transform.position.x + " --- Y = " + playerObj.transform.position.y + " --- Z = " + playerObj.transform.position.z);
+        //Debug.Log("Player Position: X = " + playerObj.transform.position.x + " --- Y = " + playerObj.transform.position.y + " --- Z = " + playerObj.transform.position.z);
 
         if (playerObj.transform.position.y < 0)
         {
