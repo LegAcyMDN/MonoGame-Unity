@@ -47,6 +47,7 @@ public class playerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Cigars"))
         {
             Debug.Log("Collision détectée avec un autre joueur !");
+            Destroy(collision.gameObject);
             // Ajoutez ici le code pour gérer la collision, par exemple, réduire la vie, repousser les joueurs, etc.
         }
     }
