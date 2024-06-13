@@ -10,24 +10,29 @@ public class ColinAction : MonoBehaviour
     public Canvas canva; // <-- Assign your GUITexture to this.
     public CigarSpawner spawnCigarScript;
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider trigger)
     {
-        canva.enabled = true;
-        spawnCigarScript.SpawnCigars();
-        if (!win )
+        if (trigger.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("Angry");
+            canva.enabled = true;
+            spawnCigarScript.SpawnCigars();
+            if (!win)
+            {
+                animator.SetTrigger("Angry");
+            }
+            else
+            {
+                animator.SetTrigger("Win");
+            }
         }
-        else
-        {
-            animator.SetTrigger("Win");
-        }
-
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider trigger)
     {
-        canva.enabled = false;
+        if (trigger.gameObject.CompareTag("Player"))
+        {
+            canva.enabled = false;
+        }
     }
     void Start()
     {
