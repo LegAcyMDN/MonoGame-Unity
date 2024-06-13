@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 using System;
 
 public class Option : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider;
     [SerializeField] private TMP_Dropdown resolutionDropD;
     [SerializeField] private Toggle fullScreen;
-    [SerializeField] private AudioMixer audioMixer; 
+
     private Resolution[] resolutions;
     private int actuelResID;
 
@@ -29,21 +28,11 @@ public class Option : MonoBehaviour
         } 
 
         resolutionDropD.AddOptions(labelRes);
-
         resolutionDropD.value = actuelResID;
         fullScreen.isOn = Screen.fullScreen;
-        audioMixer.GetFloat("Master", out float volume);
-        volumeSlider.value = Mathf.InverseLerp(-80, 5f, volume);
 
-        volumeSlider.onValueChanged.AddListener(VolumeModif);
         resolutionDropD.onValueChanged.AddListener(ResolutionModif);
         fullScreen.onValueChanged.AddListener(FullScreenToggle);
-    }
-
-    private void VolumeModif( float value)
-    {
-        print("Audio Volume : " + value);
-        audioMixer.SetFloat("Master", Mathf.Lerp(-80, 5, value));
     }
 
     private void ResolutionModif(int value)
