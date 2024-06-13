@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class ColinAction : MonoBehaviour
 {
-    public bool win;
+    public static bool win;
     private Animator animator;
     // Start is called before the first frame update
     public Canvas canva; // <-- Assign your GUITexture to this.
     public CigarSpawner spawnCigarScript;
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider trigger)
     {
-        canva.enabled = true;
-        spawnCigarScript.SpawnCigars();
-        if (!win )
+        if (trigger.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("Angry");
+            canva.enabled = true;
+            spawnCigarScript.SpawnCigars();
+            if (!win)
+            {
+                animator.SetTrigger("Angry");
+            }
+            else
+            {
+                animator.SetTrigger("Win");
+            }
         }
-        else
-        {
-            Debug.Log("oui");
-            animator.SetTrigger("Win");
-        }
-
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider trigger)
     {
-        canva.enabled = false;
+        if (trigger.gameObject.CompareTag("Player"))
+        {
+            canva.enabled = false;
+        }
     }
     void Start()
     {

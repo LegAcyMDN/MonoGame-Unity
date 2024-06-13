@@ -4,60 +4,46 @@ using UnityEngine;
 
 public class LancementObjet : MonoBehaviour
 {
-    public GameObject test_cigar;
-    public Transform target; 
-    public float throwForce = 10f; 
+    public GameObject tirEnnemi;
+    public Transform ShotPoint;
+    public Transform phasme;
+    public Transform target;
+    public float throwForce = 800;
     public float spawnRate = 1f;
     private float nextSpawnTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        test_cigar.transform.localScale = new Vector3(5f, 5f, 5f);
-        Instantiate(test_cigar, transform.position, transform.rotation);
-        // Assigner la cible s'il n'est pas déjà fait
-        if (target == null)
-        {
-            target = GameObject.FindWithTag("Player").transform;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError("Target not assigned'");
-        }
-        if (test_cigar == null)
-        {
-            Debug.LogError("Cube Prefab is not assigned");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(target);
-        if (Time.time >= nextSpawnTime && target != null)
+        if (Time.time >= nextSpawnTime)
         {
-            Debug.Log("oui on rentre la");
             ThrowCube();
             nextSpawnTime = Time.time + spawnRate;
         }
     }
     void ThrowCube()
     {
-        GameObject thrownObject = Instantiate(test_cigar, transform.position, transform.rotation);
-
-        // Mettre à jour l'échelle de l'objet instancié
-        thrownObject.transform.localScale = new Vector3(5f, 5f, 5f);
+        tirEnnemi.transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(tirEnnemi, ShotPoint.position, ShotPoint.rotation);
 
         // Appliquer une force en direction de la cible
-        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        Rigidbody rb = tirEnnemi.GetComponent<Rigidbody>();
+        Vector3 direction = (ShotPoint.position - target.position).normalized;
+        rb.AddForce(direction * throwForce, ForceMode.Impulse);
+        Debug.Log("target"+target.position);
+        Debug.Log("shotpoint" + ShotPoint.position);
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+      if (collision.gameObject.CompareTag("tirEnnemi"))
         {
-            Vector3 direction = (target.position - transform.position).normalized;
-            rb.AddForce(direction * throwForce, ForceMode.Impulse);
+            Debug.Log("ca tape");
+            //Destroy(collision.gameObject);
         }
-        else
-        {
-            Debug.LogError("No Rigidbody attached to the boiteCigar prefab");
-        }
+
     }
 }

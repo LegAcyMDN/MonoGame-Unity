@@ -12,12 +12,16 @@ public class playerScript : MonoBehaviour
     public float mouseSensitivity = 3f;
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
+    public CigarSpawner spawnCigarScript;
     public TMP_Text scoreText;
+    public Canvas CanvaScore; // <-- Assign your GUITexture to this.
+
     private int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        CanvaScore.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (scoreText == null)
         {
@@ -49,18 +53,26 @@ public class playerScript : MonoBehaviour
         //ColinAction.win = true;
         
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider trigger)
     {
-        if (collision.gameObject.CompareTag("Colin"))
+        if (trigger.gameObject.CompareTag("Colin"))
         {
 
+            if (!ColinAction.win)
+            {
+                CanvaScore.enabled = true;
+            }
+            else
+            {
+                CanvaScore.enabled = false;
+
+            }
         }
-        // Vérifie si le joueur entre en collision avec un autre joueur
-        if (collision.gameObject.CompareTag("Cigars"))
-        {
-            Destroy(collision.gameObject);
-        }
-        // Vérifier si l'objet touché a le tag "Collectible"
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+
         if (collision.gameObject.CompareTag("Cigars"))
         {
             // Incrémenter le score
@@ -69,6 +81,10 @@ public class playerScript : MonoBehaviour
             UpdateScoreText();
             // Détruire l'objet touché
             Destroy(collision.gameObject);
+            if (score < 5)
+            {
+                spawnCigarScript.SpawnCigars();
+            }
         }
     }
 
@@ -76,6 +92,11 @@ public class playerScript : MonoBehaviour
     {
 
        // Mettre à jour le texte du score
-       scoreText.text = "Score: " + score;
+       scoreText.text = "Score: " + score + "/5";
+        if(score >= 5)
+        {
+            //TODO DECLANCHER LE BOSSFIGHT
+            ColinAction.win = true;
+        }
+        }
     }
-}
