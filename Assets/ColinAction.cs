@@ -8,7 +8,8 @@ public class ColinAction : MonoBehaviour
     public bool cigarSpawned = false;
     private Animator animator;
     // Start is called before the first frame update
-    public Canvas canva; // <-- Assign your GUITexture to this.
+    public Canvas canva;
+    public Canvas canvas2;  // <-- Assign your GUITexture to this.
     public CigarSpawner spawnCigarScript;
     private GameObject phasmeObj;
     private GameObject portalObj;
@@ -30,6 +31,7 @@ public class ColinAction : MonoBehaviour
             }
             else if(win)
             {
+                Debug.Log("win");
                 animator.SetTrigger("Win");
 
 
@@ -43,7 +45,13 @@ public class ColinAction : MonoBehaviour
     {
         if (trigger.gameObject.CompareTag("Player"))
         {
+            if(!win){
             canva.enabled = false;
+            }
+            if(win){
+                canva.enabled = false;
+                canvas2.enabled = true;
+            }
         }
     }
     void Start()

@@ -79,17 +79,14 @@ public class playerScript : MonoBehaviour
         }
         if (trigger.gameObject.CompareTag("Cigars"))
         {
-            // Incr�menter le score
             score++;
-            // Mettre � jour le score affich�
             UpdateScoreText();
-            // D�truire l'objet touch�
             Destroy(trigger.gameObject);
             if (score < 5)
             {
                 spawnCigarScript.SpawnCigars();
             }
-            else {
+            else if(score >=5) {
                 ColinAction.win = true;
             }
         }
