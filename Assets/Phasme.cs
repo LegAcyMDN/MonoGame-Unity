@@ -18,9 +18,8 @@ public class Phasme : MonoBehaviour
     {
         
     }
-        void OnCollisionEnter(Collider trigger)
+         void OnCollisionEnter(Collision trigger)
     {
-                Debug.Log("PHASME : AAAAAAAAAA !!");
 
         if (trigger.gameObject.CompareTag("bullet"))
         {
@@ -28,8 +27,7 @@ public class Phasme : MonoBehaviour
 
                 // do something if it has that component on it!
                 this.health-=playerScript.dommage;
-                Debug.Log("Oui ça marche");
-                if(health<=0){
+                if(this.health<=0){
                     Destroy(stickbug);
                 }
         }
