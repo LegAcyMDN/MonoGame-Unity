@@ -7,7 +7,9 @@ public class Shooting : MonoBehaviour
     public Rigidbody _bulletPrefab;
     public Rigidbody _bulletEmitter;
     public float speed = 20;
-    public Camera Camera; 
+    public Camera Camera;
+    public Canvas baseBar;
+    public Canvas healthBar;
 
 
     // Use this for initialization

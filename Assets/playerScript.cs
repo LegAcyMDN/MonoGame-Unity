@@ -15,6 +15,10 @@ public class playerScript : MonoBehaviour
     public CigarSpawner spawnCigarScript;
     public TMP_Text scoreText;
     public Canvas CanvaScore; // <-- Assign your GUITexture to this.
+    public float life=100f;
+    public const float maxLife = 100f;
+    public Canvas lifeBar;
+    public Canvas baseBar;
 
     private int score = 0;
 
@@ -72,7 +76,6 @@ public class playerScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.CompareTag("Cigars"))
         {
             // Incrémenter le score
@@ -89,6 +92,8 @@ public class playerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("tirEnnemi"))
         {
             Destroy(collision.gameObject);
+            life -= 10;
+            UpdatingLifeBar(life, maxLife);
         }
     }
 
@@ -103,4 +108,13 @@ public class playerScript : MonoBehaviour
             ColinAction.win = true;
         }
         }
+    public void UpdatingLifeBar(float life, float maxlife)
+    {
+
+        Vector3 rescale = lifeBar.transform.localScale;
+
+        rescale.x = life / maxlife * baseBar.GetComponent<Renderer>().bounds.size.x;
+
+        lifeBar.transform.localScale = rescale;
     }
+}
