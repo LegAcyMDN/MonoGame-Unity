@@ -15,8 +15,6 @@ public class ColinAction : MonoBehaviour
 
     void OnTriggerEnter(Collider trigger)
     {
-        Debug.Log("aaaaa");
-        Debug.Log(win);
         if (trigger.gameObject.CompareTag("Player"))
         {
             canva.enabled = true;
@@ -65,7 +63,7 @@ public class ColinAction : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si le joueur entre en collision avec un autre joueur
+        // Vï¿½rifie si le joueur entre en collision avec un autre joueur
 
     }
 

@@ -16,6 +16,7 @@ public class playerScript : MonoBehaviour
     public TMP_Text scoreText;
     public Canvas CanvaScore; // <-- Assign your GUITexture to this.
     public float life=100f;
+    public static float dommage=10f;
     public const float maxLife = 100f;
     public Canvas lifeBar;
     public Canvas baseBar;
