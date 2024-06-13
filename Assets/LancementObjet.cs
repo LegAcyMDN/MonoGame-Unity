@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LancementObjet : MonoBehaviour
 {
-    public GameObject cubePrefab;
+    public GameObject boiteCigar;
     public Transform target; 
     public float throwForce = 10f; 
     public float spawnRate = 1f;
@@ -12,16 +12,6 @@ public class LancementObjet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Assigner la cible s'il n'est pas déjà fait
-        if (target == null)
-        {
-            target = GameObject.FindWithTag("Player").transform;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError("Target not assigned and no GameObject found with tag 'Target'");
-        }
     }
 
     // Update is called once per frame
@@ -37,16 +27,31 @@ public class LancementObjet : MonoBehaviour
     }
     void ThrowCube()
     {
-        // Créer un nouveau cube à la position du personnage
-        GameObject cube = Instantiate(cubePrefab, transform.position, transform.rotation);
+
+
+        boiteCigar.transform.localScale = new Vector3(5f, 5f, 5f);
+        Instantiate(boiteCigar, transform.position, transform.rotation);
 
         // Appliquer une force en direction de la cible
-        Rigidbody rb = cube.GetComponent<Rigidbody>();
+        Rigidbody rb = boiteCigar.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            Debug.Log("oui on rentre la aussi");
             Vector3 direction = (target.position - transform.position).normalized;
             rb.AddForce(direction * throwForce, ForceMode.Impulse);
         }
+        else
+        {
+            Debug.LogError("No Rigidbody attached to the boiteCigar prefab");
+        }
+
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+      /*  if (collision.boiteCigar.CompareTag("Player"))
+        {
+            
+            Destroy(boiteCigar);
+        }*/
+
     }
 }
