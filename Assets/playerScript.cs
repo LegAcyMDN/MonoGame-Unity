@@ -51,11 +51,14 @@ public class playerScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Colin"))
+        {
+
+        }
         // Vérifie si le joueur entre en collision avec un autre joueur
         if (collision.gameObject.CompareTag("Cigars"))
         {
             Destroy(collision.gameObject);
-           
         }
         // Vérifier si l'objet touché a le tag "Collectible"
         if (collision.gameObject.CompareTag("Cigars"))
@@ -71,14 +74,8 @@ public class playerScript : MonoBehaviour
 
     void UpdateScoreText()
     {
-        if (scoreText != null)
-        {
-            // Mettre à jour le texte du score
-            scoreText.text = "Score: " + score;
-        }
-        else
-        {
-            Debug.LogError("scoreText est null.");
-        }
+
+       // Mettre à jour le texte du score
+       scoreText.text = "Score: " + score;
     }
 }
