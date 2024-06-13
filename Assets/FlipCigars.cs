@@ -15,7 +15,7 @@ public class FlipCigars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.localRotation.eulerAngles.y);
+        //Debug.Log(transform.localRotation.eulerAngles.y);
 
     }
 

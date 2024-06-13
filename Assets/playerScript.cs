@@ -21,6 +21,8 @@ public class playerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //GameObject phasmeObj = GameObject.FindGameObjectWithTag("Phasme");
+        //phasmeObj.SetActive(false);
         CanvaScore.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (scoreText == null)

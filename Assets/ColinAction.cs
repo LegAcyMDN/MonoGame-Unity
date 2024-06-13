@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class ColinAction : MonoBehaviour
 {
-    public static bool win;
+    public static bool win = false;
     private Animator animator;
     // Start is called before the first frame update
     public Canvas canva; // <-- Assign your GUITexture to this.
     public CigarSpawner spawnCigarScript;
+    private GameObject phasmeObj;
 
     void OnTriggerEnter(Collider trigger)
     {
+        Debug.Log("aaaaa");
+        Debug.Log(win);
         if (trigger.gameObject.CompareTag("Player"))
         {
             canva.enabled = true;
@@ -23,6 +26,8 @@ public class ColinAction : MonoBehaviour
             else
             {
                 animator.SetTrigger("Win");
+                
+                phasmeObj.SetActive(true);
             }
         }
     }
@@ -39,6 +44,8 @@ public class ColinAction : MonoBehaviour
         canva.enabled = false;
         win = false;
         animator = GetComponent<Animator>();
+        phasmeObj = GameObject.FindGameObjectWithTag("Phasme");
+        phasmeObj.SetActive(false);
     }
     // Update is called once per frame
     void Update()

@@ -10,6 +10,8 @@ TagManager:
   - Cigars
   - Invis_floor
   - Tree
+  - tirEnnemi
+  - Phasme
   layers:
   - Default
   - TransparentFX
