@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LancementObjet : MonoBehaviour
 {
-    public GameObject test_cigar;
+    public GameObject boiteCigar;
     public Transform target; 
     public float throwForce = 10f; 
     public float spawnRate = 1f;
@@ -12,22 +12,6 @@ public class LancementObjet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        test_cigar.transform.localScale = new Vector3(5f, 5f, 5f);
-        Instantiate(test_cigar, transform.position, transform.rotation);
-        // Assigner la cible s'il n'est pas déjà fait
-        if (target == null)
-        {
-            target = GameObject.FindWithTag("Player").transform;
-        }
-
-        if (target == null)
-        {
-            Debug.LogError("Target not assigned'");
-        }
-        if (test_cigar == null)
-        {
-            Debug.LogError("Cube Prefab is not assigned");
-        }
     }
 
     // Update is called once per frame
@@ -43,13 +27,13 @@ public class LancementObjet : MonoBehaviour
     }
     void ThrowCube()
     {
-        GameObject thrownObject = Instantiate(test_cigar, transform.position, transform.rotation);
 
-        // Mettre à jour l'échelle de l'objet instancié
-        thrownObject.transform.localScale = new Vector3(5f, 5f, 5f);
+
+        boiteCigar.transform.localScale = new Vector3(5f, 5f, 5f);
+        Instantiate(boiteCigar, transform.position, transform.rotation);
 
         // Appliquer une force en direction de la cible
-        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
+        Rigidbody rb = boiteCigar.GetComponent<Rigidbody>();
         if (rb != null)
         {
             Vector3 direction = (target.position - transform.position).normalized;
@@ -59,5 +43,15 @@ public class LancementObjet : MonoBehaviour
         {
             Debug.LogError("No Rigidbody attached to the boiteCigar prefab");
         }
+
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+      /*  if (collision.boiteCigar.CompareTag("Player"))
+        {
+            
+            Destroy(boiteCigar);
+        }*/
+
     }
 }

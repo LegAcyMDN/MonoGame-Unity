@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632ec3aa33ddedc4cb7b3df7b3ce39ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 0}
+  test_cigar: {fileID: 1637474444}
   target: {fileID: 0}
   throwForce: 10
   spawnRate: 1
