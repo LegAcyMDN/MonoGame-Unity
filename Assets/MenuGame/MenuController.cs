@@ -1,22 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+public enum PanelType { None, Main, Credits, Options, }
 
 public class MenuController : MonoBehaviour
 {
-    public void JouerScene(int sceneJouer)
+    [SerializeField] private List<MenuPanel> panelsList = new List<MenuPanel>();
+
+    private Dictionary<PanelType, MenuPanel> panelsDict = new Dictionary<PanelType, MenuPanel>();
+
+    private GameManager manager;
+
+    private void Start()
     {
-        SceneManager.LoadScene(sceneJouer);
+        manager = GameManager.instance;
+
+        foreach (var panel in panelsList)
+        {
+            if (panel) { panelsDict.Add(panel.GetPanelType(), panel); }
+        }
+
+        OpenOnePanel(PanelType.Main, false);
     }
 
-    public void CreditScene(int creditScene)
+    private void OpenOnePanel(PanelType otherType, bool animer)
     {
-        SceneManager.LoadScene(creditScene);
+        foreach (var panel in panelsList) { panel.ChangeState(animer, false); }
+        if (otherType != PanelType.None) { panelsDict[otherType].ChangeState(animer, true); }
     }
+
+    public void OpenPanel(PanelType otherType)
+    { OpenOnePanel(otherType, true); }
+
+    public void JouerScene(int sceneJouer)
+    { manager.JouerScene(sceneJouer); }
 
     public void Quitter()
-    {
-        Application.Quit();
-    }
+    { manager.Quitter(); }
 }
