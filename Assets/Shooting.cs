@@ -51,7 +51,7 @@ public class Shooting : MonoBehaviour
             Physics.IgnoreCollision(_bulletEmitter.transform.GetComponent<Collider>(), bullet.GetComponent<Collider>());
             compteur++;
 
-            Destroy(bullet.gameObject,0.1f);
+            Destroy(bullet.gameObject,2f);
         }
 
 

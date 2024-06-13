@@ -12,6 +12,7 @@ TagManager:
   - Tree
   - tirEnnemi
   - Phasme
+  - bullet
   layers:
   - Default
   - TransparentFX
