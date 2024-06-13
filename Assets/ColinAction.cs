@@ -14,7 +14,6 @@ public class ColinAction : MonoBehaviour
 
     void OnTriggerEnter(Collider trigger)
     {
-        Debug.Log("aaaaa");
         Debug.Log(win);
         if (trigger.gameObject.CompareTag("Player"))
         {
