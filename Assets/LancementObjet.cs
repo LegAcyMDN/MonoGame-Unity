@@ -5,8 +5,8 @@ using UnityEngine;
 public class LancementObjet : MonoBehaviour
 {
     public GameObject boiteCigar;
-    public Transform target; 
-    public float throwForce = 10f; 
+    public Transform target;
+    public float throwForce = 100f;
     public float spawnRate = 1f;
     private float nextSpawnTime = 0f;
     // Start is called before the first frame update
@@ -17,7 +17,6 @@ public class LancementObjet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(target);
         if (Time.time >= nextSpawnTime && target != null)
         {
             Debug.Log("oui on rentre la");
@@ -34,24 +33,19 @@ public class LancementObjet : MonoBehaviour
 
         // Appliquer une force en direction de la cible
         Rigidbody rb = boiteCigar.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 direction = (target.position - transform.position).normalized;
-            rb.AddForce(direction * throwForce, ForceMode.Impulse);
-        }
-        else
-        {
-            Debug.LogError("No Rigidbody attached to the boiteCigar prefab");
-        }
+
+        Vector3 direction = (target.position - transform.position).normalized;
+         rb.AddForce(direction * throwForce, ForceMode.Impulse);
+
+
 
     }
     void OnCollisionEnter(Collision collision)
     {
-      /*  if (collision.boiteCigar.CompareTag("Player"))
+      if (collision.gameObject.CompareTag("Player"))
         {
-            
-            Destroy(boiteCigar);
-        }*/
+            Debug.Log("ca tape");
+        }
 
     }
 }

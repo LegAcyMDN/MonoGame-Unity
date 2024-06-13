@@ -1058,8 +1058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632ec3aa33ddedc4cb7b3df7b3ce39ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boiteCigar: {fileID: 0}
-  target: {fileID: 0}
+  boiteCigar: {fileID: 1637474444}
+  target: {fileID: 1084796811}
   throwForce: 10
   spawnRate: 1
 --- !u!1 &1392235313
