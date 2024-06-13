@@ -86,6 +86,10 @@ public class playerScript : MonoBehaviour
                 spawnCigarScript.SpawnCigars();
             }
         }
+        if (collision.gameObject.CompareTag("tirEnnemi"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     void UpdateScoreText()
