@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallProtection : MonoBehaviour
 {
     private GameObject playerObj = null;
+    public CigarSpawner spawnCigarScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,4 +29,21 @@ public class FallProtection : MonoBehaviour
         }
 
     }
-}
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("L'objet est dans le vide !!!!");
+        
+        if (collision.gameObject.CompareTag("Cigars"))
+        {
+            spawnCigarScript.SpawnCigars();
+            Destroy(collision.gameObject);
+            //Debug.Log("L'objet est un cigar");
+        }
+
+        //collision.gameObject.transform.position = new Vector3(collision.gameObject.transform.position.x, 5, collision.gameObject.transform.position.z);
+
+
+        
+
+    }
+    }
