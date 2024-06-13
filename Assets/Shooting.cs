@@ -13,7 +13,6 @@ public class Shooting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class Shooting : MonoBehaviour
 
             // Create the bullet and give it a velocity according to the target point computed before
             var bullet = Instantiate(_bulletPrefab, _bulletEmitter.transform.position, _bulletEmitter.transform.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = (targetPoint - _bulletEmitter.transform.position).normalized * 10;
+            bullet.GetComponent<Rigidbody>().velocity = (targetPoint - _bulletEmitter.transform.position).normalized * speed;
         }
 
         
