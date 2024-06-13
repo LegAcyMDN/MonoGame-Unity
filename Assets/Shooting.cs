@@ -13,6 +13,8 @@ public class Shooting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+
         // Create a ray from the camera going through the middle of your screen
         Ray ray = Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
@@ -33,7 +35,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             // Create a ray from the camera going through the middle of your screen
-            Ray ray = Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            Ray ray = Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0F));
             RaycastHit hit ;
 
             // Check whether your are pointing to something so as to adjust the direction
@@ -46,8 +48,10 @@ public class Shooting : MonoBehaviour
             // Create the bullet and give it a velocity according to the target point computed before
             var bullet = Instantiate(_bulletPrefab, _bulletEmitter.transform.position, _bulletEmitter.transform.rotation);
             bullet.GetComponent<Rigidbody>().velocity = (targetPoint - _bulletEmitter.transform.position).normalized * speed;
+            Physics.IgnoreCollision(_bulletEmitter.transform.GetComponent<Collider>(), bullet.GetComponent<Collider>());
+
         }
 
-        
+
     }
 }
