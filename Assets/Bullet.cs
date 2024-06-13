@@ -17,9 +17,8 @@ public class Bullet : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si le joueur entre en collision avec un autre joueur
+        // Vï¿½rifie si le joueur entre en collision avec un autre joueur
         if (collision.gameObject.tag=="Tree")
-
         Destroy(collision.gameObject);
     }
 }
