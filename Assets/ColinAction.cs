@@ -11,19 +11,19 @@ public class ColinAction : MonoBehaviour
     public Canvas canva; // <-- Assign your GUITexture to this.
     public CigarSpawner spawnCigarScript;
     private GameObject phasmeObj;
+    private GameObject portalObj;
 
     void OnTriggerEnter(Collider trigger)
     {
-        Debug.Log(win);
         if (trigger.gameObject.CompareTag("Player"))
         {
             canva.enabled = true;
             if (!cigarSpawned)
             {
                 spawnCigarScript.SpawnCigars();
-                cigarSpawned=true;
+                cigarSpawned = true;
             }
-            
+
             if (!win)
             {
                 animator.SetTrigger("Angry");
@@ -31,8 +31,10 @@ public class ColinAction : MonoBehaviour
             else
             {
                 animator.SetTrigger("Win");
-                
-                phasmeObj.SetActive(true);
+
+
+                portalObj.SetActive(true);
+                StartCoroutine(FaitSpawnPhasme());
             }
         }
     }
@@ -50,16 +52,32 @@ public class ColinAction : MonoBehaviour
         win = false;
         animator = GetComponent<Animator>();
         phasmeObj = GameObject.FindGameObjectWithTag("Phasme");
+        portalObj = GameObject.FindGameObjectWithTag("Portal");
         phasmeObj.SetActive(false);
+        portalObj.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
- 
+
     }
     void OnCollisionEnter(Collision collision)
     {
-        // Vérifie si le joueur entre en collision avec un autre joueur
+        // Vï¿½rifie si le joueur entre en collision avec un autre joueur
 
+    }
+
+
+    IEnumerator FaitSpawnPhasme()
+    {
+        // Wait for the specified amount of time
+        yield return new WaitForSeconds(3f);
+        phasmeObj.SetActive(true);
+        StartCoroutine(FaitDespawnPortal());
+    }
+    IEnumerator FaitDespawnPortal()
+    {
+        yield return new WaitForSeconds(3f);
+        portalObj.SetActive(false);
     }
 }
