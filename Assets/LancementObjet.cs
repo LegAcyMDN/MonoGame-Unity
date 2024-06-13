@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LancementObjet : MonoBehaviour
 {
-    public GameObject boiteCigar;
+    public GameObject tirEnnemi;
     public Transform ShotPoint;
+    public Transform phasme;
     public Transform target;
-    public float throwForce = 500f;
+    public float throwForce = 800;
     public float spawnRate = 1f;
     private float nextSpawnTime = 0f;
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class LancementObjet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextSpawnTime && target != null)
+        if (Time.time >= nextSpawnTime)
         {
             ThrowCube();
             nextSpawnTime = Time.time + spawnRate;
@@ -26,23 +27,18 @@ public class LancementObjet : MonoBehaviour
     }
     void ThrowCube()
     {
-
-
-        boiteCigar.transform.localScale = new Vector3(5f, 5f, 5f);
-        Instantiate(boiteCigar, ShotPoint.position, transform.rotation);
+        tirEnnemi.transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(tirEnnemi, ShotPoint.position, ShotPoint.rotation);
 
         // Appliquer une force en direction de la cible
-        Rigidbody rb = boiteCigar.GetComponent<Rigidbody>();
+        Rigidbody rb = tirEnnemi.GetComponent<Rigidbody>();
 
-        Vector3 direction = (target.position - transform.position).normalized;
-        rb.AddForce(direction * 200, ForceMode.Impulse);
-
-
-
+        Vector3 direction = (target.position - phasme.position).normalized;
+        rb.AddForce(direction * throwForce, ForceMode.Impulse);
     }
     void OnCollisionEnter(Collision collision)
     {
-      if (collision.gameObject.CompareTag("Cigar"))
+      if (collision.gameObject.CompareTag("tirEnnemi"))
         {
             Debug.Log("ca tape");
             Destroy(collision.gameObject);
