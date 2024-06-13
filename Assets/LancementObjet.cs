@@ -39,10 +39,15 @@ public class LancementObjet : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-      if (collision.gameObject.CompareTag("tirEnnemi"))
+      if (collision.gameObject.CompareTag("Player")||collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("ca tape");
-            //Destroy(collision.gameObject);
+            if (gameObject.tag == "TirEnnemi")
+            {
+                Destroy(gameObject);
+            }
+
+
         }
 
     }

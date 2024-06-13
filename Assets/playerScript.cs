@@ -81,6 +81,10 @@ public class playerScript : MonoBehaviour
             // Détruire l'objet touché
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("tirEnnemi"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     void UpdateScoreText()
