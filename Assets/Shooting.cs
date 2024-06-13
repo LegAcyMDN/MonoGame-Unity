@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Rigidbody projectile;
-
+    public Rigidbody _bulletPrefab;
+    public Rigidbody _bulletEmitter;
     public float speed = 20;
-
+    public Camera Camera; 
 
 
     // Use this for initialization
@@ -22,13 +22,20 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            // Create a ray from the camera going through the middle of your screen
+            Ray ray = Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            RaycastHit hit ;
 
-            Rigidbody instantiatedProjectile = Instantiate(projectile,
-                                                           transform.position,
-                                                           transform.rotation)
-                as Rigidbody;
+            // Check whether your are pointing to something so as to adjust the direction
+            Vector3 targetPoint ;
+            if (Physics.Raycast(ray, out hit))
+                targetPoint = hit.point;
+            else
+                targetPoint = ray.GetPoint( 1000 ) ; // You may need to change this value according to your needs
 
-            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
+            // Create the bullet and give it a velocity according to the target point computed before
+            var bullet = Instantiate(_bulletPrefab, _bulletEmitter.transform.position, _bulletEmitter.transform.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = (targetPoint - _bulletEmitter.transform.position).normalized * 10;
         }
 
         
