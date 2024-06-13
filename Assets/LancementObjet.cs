@@ -32,16 +32,17 @@ public class LancementObjet : MonoBehaviour
 
         // Appliquer une force en direction de la cible
         Rigidbody rb = tirEnnemi.GetComponent<Rigidbody>();
-
-        Vector3 direction = (target.position - phasme.position).normalized;
+        Vector3 direction = (ShotPoint.position - target.position).normalized;
         rb.AddForce(direction * throwForce, ForceMode.Impulse);
+        Debug.Log("target"+target.position);
+        Debug.Log("shotpoint" + ShotPoint.position);
     }
     void OnCollisionEnter(Collision collision)
     {
       if (collision.gameObject.CompareTag("tirEnnemi"))
         {
             Debug.Log("ca tape");
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
 
     }
