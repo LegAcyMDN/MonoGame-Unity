@@ -8,6 +8,10 @@ public class Shooting : MonoBehaviour
     public Rigidbody _bulletEmitter;
     public float speed = 20;
     public Camera Camera;
+    public Canvas baseBar;
+    public Canvas healthBar;
+
+
     public int compteur=0;
     public UnityEngine.Rigidbody bullet;
     // Use this for initialization
