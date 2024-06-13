@@ -13,6 +13,17 @@ public class Shooting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Create a ray from the camera going through the middle of your screen
+        Ray ray = Camera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        RaycastHit hit;
+
+        // Check whether your are pointing to something so as to adjust the direction
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out hit))
+            targetPoint = hit.point;
+        else
+            targetPoint = ray.GetPoint(1000); // You may need to change this value according to your needs
+
     }
 
     // Update is called once per frame
