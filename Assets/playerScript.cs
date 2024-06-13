@@ -13,11 +13,14 @@ public class playerScript : MonoBehaviour
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
     public TMP_Text scoreText;
+    public Canvas CanvaScore; // <-- Assign your GUITexture to this.
+
     private int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        CanvaScore.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         if (scoreText == null)
         {
@@ -49,12 +52,26 @@ public class playerScript : MonoBehaviour
         //ColinAction.win = true;
         
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider trigger)
     {
-        if (collision.gameObject.CompareTag("Colin"))
+        if (trigger.gameObject.CompareTag("Colin"))
         {
 
+            if (!ColinAction.win)
+            {
+                CanvaScore.enabled = true;
+            }
+            else
+            {
+                CanvaScore.enabled = false;
+
+            }
         }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+
         // Vérifie si le joueur entre en collision avec un autre joueur
         if (collision.gameObject.CompareTag("Cigars"))
         {

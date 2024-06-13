@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColinAction : MonoBehaviour
 {
-    public bool win;
+    public static bool win;
     private Animator animator;
     // Start is called before the first frame update
     public Canvas canva; // <-- Assign your GUITexture to this.
@@ -20,7 +20,6 @@ public class ColinAction : MonoBehaviour
         }
         else
         {
-            Debug.Log("oui");
             animator.SetTrigger("Win");
         }
 
