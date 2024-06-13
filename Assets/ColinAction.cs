@@ -14,7 +14,7 @@ public class ColinAction : MonoBehaviour
     {
         canva.enabled = true;
         spawnCigarScript.SpawnCigars();
-        if (win)
+        if (!win )
         {
             animator.SetTrigger("Angry");
         }
@@ -33,7 +33,7 @@ public class ColinAction : MonoBehaviour
     void Start()
     {
         canva.enabled = false;
-
+        win = false;
         animator = GetComponent<Animator>();
     }
     // Update is called once per frame
