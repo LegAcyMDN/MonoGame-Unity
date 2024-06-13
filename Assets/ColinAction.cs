@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColinAction : MonoBehaviour
 {
     public static bool win = false;
+    public bool cigarSpawned = false;
     private Animator animator;
     // Start is called before the first frame update
     public Canvas canva; // <-- Assign your GUITexture to this.
@@ -18,7 +19,12 @@ public class ColinAction : MonoBehaviour
         if (trigger.gameObject.CompareTag("Player"))
         {
             canva.enabled = true;
-            spawnCigarScript.SpawnCigars();
+            if (!cigarSpawned)
+            {
+                spawnCigarScript.SpawnCigars();
+                cigarSpawned=true;
+            }
+            
             if (!win)
             {
                 animator.SetTrigger("Angry");
