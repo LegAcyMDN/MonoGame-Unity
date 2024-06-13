@@ -20,7 +20,7 @@ public class playerScript : MonoBehaviour
     public Canvas lifeBar;
     public Canvas baseBar;
 
-    private int score = 0;
+    public static int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -74,23 +74,27 @@ public class playerScript : MonoBehaviour
                 CanvaScore.enabled = false;
 
             }
+        
         }
-    }
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Cigars"))
+        if (trigger.gameObject.CompareTag("Cigars"))
         {
             // Incr�menter le score
             score++;
             // Mettre � jour le score affich�
             UpdateScoreText();
             // D�truire l'objet touch�
-            Destroy(collision.gameObject);
+            Destroy(trigger.gameObject);
             if (score < 5)
             {
                 spawnCigarScript.SpawnCigars();
             }
         }
+    }
+
+
+        void OnCollisionEnter(Collision collision)
+    {
+
         if (collision.gameObject.CompareTag("tirEnnemi"))
         {
             Destroy(collision.gameObject);
@@ -99,7 +103,7 @@ public class playerScript : MonoBehaviour
         }
     }
 
-    void UpdateScoreText()
+    public void UpdateScoreText()
     {
 
        // Mettre � jour le texte du score
