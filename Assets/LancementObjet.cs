@@ -5,8 +5,9 @@ using UnityEngine;
 public class LancementObjet : MonoBehaviour
 {
     public GameObject boiteCigar;
+    public Transform ShotPoint;
     public Transform target;
-    public float throwForce = 100f;
+    public float throwForce = 500f;
     public float spawnRate = 1f;
     private float nextSpawnTime = 0f;
     // Start is called before the first frame update
@@ -19,7 +20,6 @@ public class LancementObjet : MonoBehaviour
     {
         if (Time.time >= nextSpawnTime && target != null)
         {
-            Debug.Log("oui on rentre la");
             ThrowCube();
             nextSpawnTime = Time.time + spawnRate;
         }
@@ -29,22 +29,23 @@ public class LancementObjet : MonoBehaviour
 
 
         boiteCigar.transform.localScale = new Vector3(5f, 5f, 5f);
-        Instantiate(boiteCigar, transform.position, transform.rotation);
+        Instantiate(boiteCigar, ShotPoint.position, transform.rotation);
 
         // Appliquer une force en direction de la cible
         Rigidbody rb = boiteCigar.GetComponent<Rigidbody>();
 
         Vector3 direction = (target.position - transform.position).normalized;
-         rb.AddForce(direction * throwForce, ForceMode.Impulse);
+        rb.AddForce(direction * 200, ForceMode.Impulse);
 
 
 
     }
     void OnCollisionEnter(Collision collision)
     {
-      if (collision.gameObject.CompareTag("Player"))
+      if (collision.gameObject.CompareTag("Cigar"))
         {
             Debug.Log("ca tape");
+            Destroy(collision.gameObject);
         }
 
     }
