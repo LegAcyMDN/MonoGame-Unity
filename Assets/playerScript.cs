@@ -31,7 +31,7 @@ public class playerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         if (scoreText == null)
         {
-            Debug.LogError("Le champ scoreText n'a pas été assigné dans l'inspecteur.");
+            Debug.LogError("Le champ scoreText n'a pas ï¿½tï¿½ assignï¿½ dans l'inspecteur.");
             return;
         }
         UpdateScoreText();
@@ -80,11 +80,11 @@ public class playerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cigars"))
         {
-            // Incrémenter le score
+            // Incrï¿½menter le score
             score++;
-            // Mettre à jour le score affiché
+            // Mettre ï¿½ jour le score affichï¿½
             UpdateScoreText();
-            // Détruire l'objet touché
+            // Dï¿½truire l'objet touchï¿½
             Destroy(collision.gameObject);
             if (score < 5)
             {
@@ -102,21 +102,20 @@ public class playerScript : MonoBehaviour
     void UpdateScoreText()
     {
 
-       // Mettre à jour le texte du score
+       // Mettre ï¿½ jour le texte du score
        scoreText.text = "Score: " + score + "/5";
         if(score >= 5)
         {
             //TODO DECLANCHER LE BOSSFIGHT
             ColinAction.win = true;
         }
-        }
+    }
     public void UpdatingLifeBar(float life, float maxlife)
     {
 
-        Vector3 rescale = lifeBar.transform.localScale;
+        RectTransform rt = lifeBar.GetComponent (typeof (RectTransform)) as RectTransform;
+        RectTransform rt2 = baseBar.GetComponent(typeof(RectTransform)) as RectTransform;
+        rt.sizeDelta = new Vector2 (life/maxlife * rt.sizeDelta.x, rt.sizeDelta.y);
 
-        rescale.x = life / maxlife * baseBar.GetComponent<Renderer>().bounds.size.x;
-
-        lifeBar.transform.localScale = rescale;
     }
 }
