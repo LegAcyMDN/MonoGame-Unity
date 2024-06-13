@@ -28,7 +28,7 @@ public class ColinAction : MonoBehaviour
             {
                 animator.SetTrigger("Angry");
             }
-            else
+            else if(win)
             {
                 animator.SetTrigger("Win");
 
@@ -49,7 +49,7 @@ public class ColinAction : MonoBehaviour
     void Start()
     {
         canva.enabled = false;
-        win = false;
+        //win = false;
         animator = GetComponent<Animator>();
         phasmeObj = GameObject.FindGameObjectWithTag("Phasme");
         portalObj = GameObject.FindGameObjectWithTag("Portal");

@@ -89,6 +89,9 @@ public class playerScript : MonoBehaviour
             {
                 spawnCigarScript.SpawnCigars();
             }
+            else {
+                ColinAction.win = true;
+            }
         }
     }
 

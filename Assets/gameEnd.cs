@@ -6,25 +6,25 @@ using TMPro;
 
 public class gameEnd : MonoBehaviour
 {
-    public Camera playerCamera; // Référence à la caméra du personnage
+    public Camera playerCamera; // Rï¿½fï¿½rence ï¿½ la camï¿½ra du personnage
     public Camera AnimCamera;
-    public Animator gameEndAnimator; // Référence à l'Animator
+    public Animator gameEndAnimator; // Rï¿½fï¿½rence ï¿½ l'Animator
     public Animation animFin; 
     public string animationTriggerName = "GameEnd"; // Nom du trigger pour lancer l'animation
     public Canvas healthbar;
     public Canvas text;
 
-    // Méthode à appeler pour finir le jeu
+    // Mï¿½thode ï¿½ appeler pour finir le jeu
     public void EndGame()
     {
         if (playerCamera != null)
         {
-            // Désactiver la caméra du personnage et la bar de vie
+            // Dï¿½sactiver la camï¿½ra du personnage et la bar de vie
             healthbar.enabled = false;
             playerCamera.enabled = false;
             text.enabled = true;
-            //AnimCamera.enabled = true;
-            Debug.Log("Caméra du personnage désactivée.");
+            AnimCamera.enabled = true;
+            Debug.Log("Camï¿½ra du personnage dï¿½sactivï¿½e.");
         }
         else
 
@@ -36,20 +36,20 @@ public class gameEnd : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Animator non assigné.");
+            Debug.LogError("Animator non assignï¿½.");
         }
 
         // Autres logiques de fin de jeu ici
-        Debug.Log("Le jeu est terminé. Lancement de l'animation de fin de jeu.");
+        Debug.Log("Le jeu est terminï¿½. Lancement de l'animation de fin de jeu.");
     }
 
-    // Exemple pour déclencher la fin du jeu
+    // Exemple pour dï¿½clencher la fin du jeu
     void Update()
     {
-        // Exemple de condition pour la fin du jeu (par exemple, un bouton pressé)
+        // Exemple de condition pour la fin du jeu (par exemple, un bouton pressï¿½)
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Fin du jeu déclenchée par l'utilisateur.");
+            Debug.Log("Fin du jeu dï¿½clenchï¿½e par l'utilisateur.");
             EndGame();
         }
     }

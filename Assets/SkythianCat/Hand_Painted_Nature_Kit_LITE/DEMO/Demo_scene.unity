@@ -222,17 +222,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89960588}
-  m_LocalRotation: {x: 0, y: 0.9956217, z: 0, w: 0.09347474}
-  m_LocalPosition: {x: 0, y: 0, z: -2.54}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.9956217, z: -0, w: 0.09347474}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 362982482}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 169.27293, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.0299993, y: 5.66}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &89960594
@@ -639,8 +639,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1726528659}
   - {fileID: 89960593}
+  - {fileID: 1726528659}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6397,7 +6397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tirEnnemi: {fileID: 163020138}
   ShotPoint: {fileID: 1261121264}
-  phasme: {fileID: 0}
+  phasme: {fileID: 1212832964}
   target: {fileID: 1457102340}
   throwForce: 50
   spawnRate: 1
@@ -6418,9 +6418,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d661fbbf015194e961700fd02afab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1457102339}
+  AnimCamera: {fileID: 89960592}
+  gameEndAnimator: {fileID: 89960590}
+  animFin: {fileID: 0}
+  animationTriggerName: GameEnd
+  healthbar: {fileID: 750918993}
+  text: {fileID: 1726528662}
   health: 400
   dommage: 5
-  stickbug: {fileID: 0}
+  stickbug: {fileID: 1212832954}
 --- !u!4 &1261121264
 Transform:
   m_ObjectHideFlags: 0
@@ -7013,8 +7020,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bonjour cher ami, j'ai perdu mes cigars cubains  de Cuba. \nRetrouve les
-    et retrouve le chenapan qui les vole !\nSinon, taNoteDeSAEBDD -= 1;"
+  m_text: "Bonjour cher ami, j'ai perdu mes cigares cubains  de Cuba. \nRetrouve
+    les et retrouve le chenapan qui les vole !\nSinon, taNoteDeSAEBDD -= 1;"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7529,7 +7536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bien jou\xE9, tu as sauv\xE9 les \ncigars cubains de Cuba \nde Pcolino
+  m_text: "Bien jou\xE9, tu as sauv\xE9 les \ncigares cubains de Cuba \nde Pcolino
     ! \u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7640,7 +7647,7 @@ RectTransform:
   m_Children:
   - {fileID: 1680338966}
   m_Father: {fileID: 362982482}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
