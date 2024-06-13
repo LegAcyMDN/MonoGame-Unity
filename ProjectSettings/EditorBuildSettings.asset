@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/MenuGame/Menu.unity
     guid: 29474b4d839a4e2419fbef3ace8b18f9
   - enabled: 1
-    path: Assets/SkythianCat/Hand_Painted_Nature_Kit_LITE/DEMO/Demo_scene.unity
+    path: Assets/SkythianCat/Hand_Painted_Nature_Kit_LITE/DEMO/Scene.unity
     guid: 2b90041c02fa0424794af2d500508091
   m_configObjects: {}

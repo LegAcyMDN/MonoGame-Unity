@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class playerScript : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class playerScript : MonoBehaviour
     public const float maxLife = 100f;
     public Canvas lifeBar;
     public Canvas baseBar;
+    public Canvas mort;
 
     public static int score = 0;
+
+    private GameManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,8 @@ public class playerScript : MonoBehaviour
         }
         UpdateScoreText();
         rb = GetComponent<Rigidbody>();
+
+        manager = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -117,10 +123,25 @@ public class playerScript : MonoBehaviour
     }
     public void UpdatingLifeBar(float life, float maxlife)
     {
+        if (life > 0)
+        {
+            RectTransform rt = lifeBar.GetComponent(typeof(RectTransform)) as RectTransform;
+            RectTransform rt2 = baseBar.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta = new Vector2(life / maxlife * rt.sizeDelta.x, rt.sizeDelta.y);
+        } else
+        {
+            //SceneRetour(0);
+            SceneManager.LoadScene(sceneBuildIndex: 0);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+           // mort.enabled = true;
+        }
 
-        RectTransform rt = lifeBar.GetComponent (typeof (RectTransform)) as RectTransform;
-        RectTransform rt2 = baseBar.GetComponent(typeof(RectTransform)) as RectTransform;
-        rt.sizeDelta = new Vector2 (life/maxlife * rt.sizeDelta.x, rt.sizeDelta.y);
+
+
 
     }
+
+    //public void SceneRetour(int sceneRetour)
+    //{ manager.sceneRetour = sceneRetour;}
 }
