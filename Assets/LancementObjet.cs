@@ -30,6 +30,25 @@ public class LancementObjet : MonoBehaviour
     void ThrowCube()
     {
 
+        /*tirEnnemi.transform.localScale = new Vector3(1f, 1f, 1f);
+        Instantiate(tirEnnemi, ShotPoint.position, Quaternion.identity);
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        //Debug.Log("target x : " + playerObj.transform.position.x);
+
+        // Appliquer une force en direction de la cible
+        Rigidbody rb = tirEnnemi.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        Vector3 direction = new Vector3(playerObj.transform.position.x - ShotPoint.position.x, playerObj.transform.position.y - ShotPoint.position.y, playerObj.transform.position.z - ShotPoint.position.z);
+        rb.velocity = direction * throwForce;*/
+
+
+        /*
+        Vector3 direction = (ShotPoint.position - target.position).normalized;
+        rb.AddForce(direction * throwForce, ForceMode.Impulse);
+        Debug.Log("target"+target.position);
+        Debug.Log("shotpoint" + ShotPoint.position);*/
+
         tirEnnemi.transform.localScale = new Vector3(1f, 1f, 1f);
         GameObject newTirEnnemi = Instantiate(tirEnnemi, ShotPoint.position, Quaternion.identity);
 
@@ -45,6 +64,12 @@ public class LancementObjet : MonoBehaviour
                 rb.velocity = direction * throwForce;
             }
         }
+
+
+
+
+
+
 
     }
     void OnCollisionEnter(Collision collision)

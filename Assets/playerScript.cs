@@ -91,6 +91,9 @@ public class playerScript : MonoBehaviour
             {
                 spawnCigarScript.SpawnCigars();
             }
+            else {
+                ColinAction.win = true;
+            }
         }
         if (collision.gameObject.CompareTag("tirEnnemi"))
         {
