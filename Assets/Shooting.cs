@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     public Canvas healthBar;
 
 
+    public int compteur=0;
+    public UnityEngine.Rigidbody bullet;
     // Use this for initialization
     void Start()
     {
@@ -26,7 +28,7 @@ public class Shooting : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
             targetPoint = hit.point;
         else
-            targetPoint = ray.GetPoint(1000); // You may need to change this value according to your needs
+            targetPoint = ray.GetPoint(1000);
 
     }
 
@@ -45,14 +47,17 @@ public class Shooting : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
                 targetPoint = hit.point;
             else
-                targetPoint = ray.GetPoint( 1000 ) ; // You may need to change this value according to your needs
+                targetPoint = ray.GetPoint( 1000 ) ;
 
             // Create the bullet and give it a velocity according to the target point computed before
-            var bullet = Instantiate(_bulletPrefab, _bulletEmitter.transform.position, _bulletEmitter.transform.rotation);
+            bullet = Instantiate(_bulletPrefab, _bulletEmitter.transform.position, _bulletEmitter.transform.rotation);
             bullet.GetComponent<Rigidbody>().velocity = (targetPoint - _bulletEmitter.transform.position).normalized * speed;
             Physics.IgnoreCollision(_bulletEmitter.transform.GetComponent<Collider>(), bullet.GetComponent<Collider>());
+            compteur++;
 
+            Destroy(bullet.gameObject,2f);
         }
+
 
 
     }
