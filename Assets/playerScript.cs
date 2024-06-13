@@ -12,6 +12,7 @@ public class playerScript : MonoBehaviour
     public float mouseSensitivity = 3f;
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
+    public CigarSpawner spawnCigarScript;
     public TMP_Text scoreText;
     public Canvas CanvaScore; // <-- Assign your GUITexture to this.
 
@@ -80,6 +81,10 @@ public class playerScript : MonoBehaviour
             UpdateScoreText();
             // Détruire l'objet touché
             Destroy(collision.gameObject);
+            if (score < 5)
+            {
+                spawnCigarScript.SpawnCigars();
+            }
         }
     }
 
@@ -91,6 +96,7 @@ public class playerScript : MonoBehaviour
         if(score >= 5)
         {
             //TODO DECLANCHER LE BOSSFIGHT
+            ColinAction.win = true;
         }
         }
     }
