@@ -108,7 +108,7 @@ public class playerScript : MonoBehaviour
     {
 
        // Mettre � jour le texte du score
-       scoreText.text = "Score: " + score + "/5";
+       scoreText.text = "Cigare(s): " + score + "/5";
         if(score >= 5)
         {
             //TODO DECLANCHER LE BOSSFIGHT
